@@ -1,0 +1,134 @@
+/* --- Анимированный новогодний фон --- */
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: linear-gradient(270deg, #ff0000, #00ff00, #ff0000, #00ff00);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #fff;
+    padding-top: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* --- Контейнер игры --- */
+#game {
+    position: relative;
+    background: rgba(0,0,0,0.6);
+    padding: 25px 20px;
+    width: 95%;
+    max-width: 480px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 1s ease;
+    z-index: 1;
+}
+
+/* --- Анимация появления --- */
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(-20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+/* --- Заголовок --- */
+h1 {
+    margin-top: 0;
+    font-size: 2em;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* --- Поля ввода --- */
+input {
+    width: 90%;
+    padding: 14px;
+    margin-top: 12px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    box-shadow: inset 0 0 8px rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    background: rgba(255,255,255,0.2);
+    box-shadow: inset 0 0 12px rgba(255,255,255,0.4);
+}
+
+/* --- Кнопка --- */
+button {
+    margin-top: 18px;
+    padding: 16px 28px;
+    font-size: 1.3em;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #00ff88, #00ccaa);
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* --- Круговой таймер --- */
+#timerContainer {
+    margin: 15px auto;
+    width: 80px;
+    height: 80px;
+}
+
+/* --- Эффект ошибки --- */
+@keyframes shakeRed {
+  0%,100%{border-color:#fff}
+  25%,75%{border-color:#ff4444}
+  50%{border-color:#ff0000}
+}
+input.error {
+  animation: shakeRed 0.5s;
+  box-shadow: 0 0 10px #ff4444 inset;
+}
+
+/* --- Победа мерцающий текст --- */
+@keyframes glow {
+  0%,100%{text-shadow: 0 0 10px #00ff88;}
+  50%{text-shadow: 0 0 25px #00ff88, 0 0 10px #0f0;}
+}
+h1.win {
+  animation: glow 1s infinite;
+}
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 400px) {
+    #game {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    input {
+        font-size: 1em;
+        padding: 12px;
+    }
+    button {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+}
