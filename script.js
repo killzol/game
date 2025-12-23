@@ -77,7 +77,7 @@ function finishGame() {
     gameEnded = true;
     clearInterval(countdownInterval);
     let container = document.getElementById("game");
-    if(mistakes >= Math.ceil(maxRounds/2)){
+    if(mistakes >= Math.ceil(maxRounds/5)){
         container.innerHTML = `<h1 style="color:#ff4444; text-shadow:0 0 10px #ff0000;">❌ ПРОИГРЫШ ❌</h1><p>Ошибок: ${mistakes} из ${maxRounds}</p>`;
     } else {
         container.innerHTML = `<h1 class="win">🎉 ПОБЕДА 🎉</h1>
@@ -166,3 +166,4 @@ window.addEventListener("resize",()=>{
 });
 createSnowflakes();
 drawSnow();
+
